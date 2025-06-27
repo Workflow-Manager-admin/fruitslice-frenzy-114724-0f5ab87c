@@ -1,0 +1,4 @@
+{
+    "command": "PORT=<port> HOST=<host> BROWSER=none npm start",
+    "working_directory": "/home/kavia/workspace/code-generation/fruitslice-frenzy-114724-0f5ab87c/fruit_slice_frontend_workspace/fruit_slice_frontend"
+}

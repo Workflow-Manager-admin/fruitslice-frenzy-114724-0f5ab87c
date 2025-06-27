@@ -1,0 +1,275 @@
+:root {
+  --primary: #43a047;
+  --secondary: #fbc02d;
+  --accent: #d32f2f;
+  --bg-dark: #1a1a1a;
+  --bg-header: #161b1c;
+  --bg-game: #161616;
+  --text-main: #fff;
+  --text-muted: #b9babf;
+  --border: #262730;
+  --card-bg: #23233a;
+  --canvas-border: #282b33;
+  --player-lives: #d32f2f;
+  --player-score: #fbc02d;
+  --btn-bg: #23233a;
+  --btn-hover: #25262e;
+  --overlay-bg: rgba(22,22,22,0.84);
+  --glow: #fbc02d80;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-dark: #1a1a1a;
+  --bg-header: #1a232a;
+  --bg-game: #161616;
+  --text-main: #fff;
+  --card-bg: #23233a;
+  --btn-bg: #191b22;
+  --btn-hover: #232442;
+}
+
+[data-theme="light"] {
+  --bg-dark: #ffffff;
+  --bg-header: #f9f9fa;
+  --bg-game: #ecf2fa;
+  --text-main: #0c0c12;
+  --card-bg: #f1f2f9;
+  --btn-bg: #f1f2f9;
+  --btn-hover: #eaeef6;
+}
+
+.fruit-slice-app {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  transition: background 0.25s, color 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.fruit-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.fruit-header {
+  padding: 0.5rem 1.1rem;
+  background: var(--bg-header);
+  box-shadow: 0 0 16px 0 rgba(67,160,71,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 1.07rem;
+  min-height: 59px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.35em;
+  font-weight: 600;
+  color: var(--secondary);
+  letter-spacing: 0.01em;
+  gap: 0.6em;
+  user-select: none;
+}
+.fruit-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.score-lives {
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+  user-select: none;
+}
+.lives {
+  color: var(--player-lives);
+  font-size: 1.25em;
+  text-shadow: 0 2px 6px var(--accent);
+  letter-spacing: 0.15em;
+}
+.score {
+  color: var(--player-score);
+  font-size: 1.08em;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  background: var(--btn-bg);
+  padding: 0.16em 1.05em;
+  border-radius: 15px;
+  box-shadow: 0 2px 2px 0 rgba(251,192,45,0.07);
+}
+.settings-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-round {
+  width: 38px;
+  height: 38px;
+  background: var(--btn-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  font-size: 1.4em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.18s;
+  box-shadow: 0 2px 0 0 var(--canvas-border);
+}
+.btn-round:hover, .btn-round:focus {
+  background: var(--btn-hover);
+  color: var(--primary);
+}
+
+.game-area-wrapper {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    170deg,
+    var(--bg-game) 70%,
+    var(--primary) 400%
+  );
+  border-radius: 18px;
+  box-shadow: 0 4px 48px 0 #10151a60, 0 1.5px 6px #222b3359;
+  position: relative;
+  overflow: hidden;
+}
+
+.fruit-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 18px;
+  border: 2px solid var(--canvas-border);
+  background: transparent;
+  box-shadow: 0 0 9px var(--primary)33;
+}
+
+.game-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-bg);
+  z-index: 2;
+  border-radius: 18px;
+  animation: overlayFadeIn 0.7s;
+}
+
+@keyframes overlayFadeIn {
+  0% { opacity: 0; }
+  30% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.overlay-main {
+  color: var(--secondary);
+  background: var(--card-bg);
+  padding: 28px 24px 21px 24px;
+  border-radius: 22px;
+  box-shadow: 0 4px 22px 0 var(--primary)18;
+  text-align: center;
+  min-width: 280px;
+  max-width: 350px;
+  min-height: 180px;
+  margin: 0 auto;
+  font-size: 1.11em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.overlay-main h1,
+.overlay-main h2 {
+  letter-spacing: 0.04em;
+  margin-bottom: 0.29em;
+  color: var(--primary);
+  font-weight: 700;
+}
+.final-score {
+  color: var(--player-score);
+  font-size: 1.22em;
+  font-weight: 600;
+}
+
+.start-btn, .restart-btn {
+  outline: none;
+  border: none;
+  background: var(--secondary);
+  color: #111;
+  border-radius: 14px;
+  font-size: 1.13em;
+  font-weight: 600;
+  padding: 0.64em 1.81em;
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+  cursor: pointer;
+  box-shadow: 0 3px 26px 0 #fbc02d33, 0 1.5px 6px #23233a40;
+  transition: background 0.15s, color 0.16s;
+}
+.start-btn:hover, .restart-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.overlay-hint {
+  margin-top: 0.5em;
+  font-size: 0.92em;
+  color: var(--text-muted);
+  opacity: 0.83;
+  letter-spacing: 0.02em;
+}
+.overlay-hint span {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 2px 7px 2px 7px;
+}
+
+.fruit-footer {
+  text-align: center;
+  font-size: 1em;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding: 1.05em 0 0.7em 0;
+  background: var(--bg-header);
+  border-top: 1.5px solid var(--border);
+  letter-spacing: 0.01em;
+}
+.fruit-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.13s;
+}
+.fruit-footer a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .fruit-header {
+    flex-direction: column;
+    gap: 3px;
+    min-height: 48px;
+    font-size: 0.94em;
+    padding: 0.12rem;
+  }
+  .game-area-wrapper {
+    width: 98vw !important;
+    max-width: 99vw !important;
+    border-radius: 11px;
+  }
+  .fruit-footer {
+    font-size: 0.98em;
+    padding-bottom: 0.41em;
+  }
+}
