@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import "./App.css";
-import fruitIcon from "./fruit_icon.svg";
+import fruitIcon from "./fruit_icon.svg"; // Make sure fruit_icon.svg exists in src. If not, use a placeholder.
+
 
 // Sounds (placeholders, to be replaced with real assets when building for prod)
 const SLICE_SOUND_URL =
